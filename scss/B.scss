@@ -1,0 +1,163 @@
+@charset "utf-8";
+
+$highlight-color: red;
+$width: 100px;
+$border: 1px solid $highlight-color;
+a {
+  color: $highlight-color;
+  width: $width;
+  p {
+    border: $border;
+  }
+}
+/*
+two
+*/
+#content {
+  float: left;
+  article {
+    font-size: 12px;
+    p {
+      border: 1px solid darkred;
+      a {
+        text-decoration: none;
+      }
+    }
+   nav {
+     text-align: center;
+      ul {
+        float: right;
+        li {
+          list-style: none;
+           a {
+             padding-left: 16px;
+           }
+        }
+      }
+   }
+  }
+}
+
+/*
+three
+*/
+#content {
+  background-color: #f5f5f5;
+  aside { background-color: #eee }
+}
+
+/*
+four
+*/
+article a {
+  color: blue;
+:hover {
+  color: #000;
+}
+}
+/*
+five
+*/
+article a {
+  color: blue;
+  &:hover {
+    color: #02B3E1;
+  }
+}
+
+/*
+群组选择器
+*/
+
+content {
+  margin: 20px;
+  h1, h2, h3 {
+    padding-left: .8em;
+  }
+}
+
+/*
+群组选择器2
+*/
+
+content, nav {
+  a {
+    color: #000;
+  }
+}
+
+/*
+组合选择器 > + ~
+*/
+article {
+  ~ article {
+border: 1px solid cadetblue;
+  }
+  + p {
+    margin: 20px;
+  }
+  dl > {
+    dd {
+      font-size: 14px;
+    }
+    dt {
+      color: #000;
+    }
+  }
+  nav + & {
+    text-align: right;
+  }
+}
+/*
+属性嵌套
+*/
+nav {
+  border: {
+    style: solid;
+    width: 1px;
+    color: #ccc;
+  }
+}
+
+/*
+属性嵌套缩写
+*/
+nav {
+  border: 1px solid #02B3E1   //这种注释不会出现在css中
+{
+    left: 2px;  /*这种注释会出现在css中 */
+  right: 5px;
+}
+}
+
+/*
+混合器 mixin
+*/
+
+@mixin border_radius {
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+.notice {
+background-color: rebeccapurple;
+  border:1px solid #01B4E1;
+  @include border_radius;
+}
+
+/* 混合器中的css规则*/
+@mixin no_bulltes {
+  ul {
+    float: left;
+    li {
+      list-style-type:none;
+      padding-left: 10px;
+    }
+  }
+}
+
+.aa {
+  font-size: 18px;
+  @include no_bulltes;
+}
+
